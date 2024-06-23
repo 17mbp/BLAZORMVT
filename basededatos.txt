@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[ListaMetas] (
+    [Id]         INT          IDENTITY (0, 1) NOT NULL,
+    [Estado]     VARCHAR (18) NULL,
+    [Nombre]     VARCHAR (80) NULL,
+    [Porcentaje] INT NULL,
+    [Fecha]      DATETIME     NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+GO
+CREATE TABLE [dbo].[Tareas] (
+    [IdTareas]    INT          NULL,
+    [Tarea] VARCHAR (80) NOT NULL,
+	[Importante] BIT
+);
+GO
+ALTER TABLE dbo.Tareas
+ADD CONSTRAINT FK_Tareas_ListaMetas FOREIGN KEY (IdTareas)
+REFERENCES dbo.ListaMetas(Id);

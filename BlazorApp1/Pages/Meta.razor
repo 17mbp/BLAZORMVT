@@ -1,0 +1,278 @@
+﻿@using BlazorApp1.Client
+@using System.Text
+@using System.Text.Json
+@page "/counter"
+@inject HttpClient Http
+<PageTitle>Metas</PageTitle>
+
+<h1>Administrador</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+<div class="container">
+    <div class="modal fade @(mostrarModalConfirmarEliminar ? "show d-block" : "")" id="confirmarEliminarModal" tabindex="-1" role="dialog" style="display: @(mostrarModalConfirmarEliminar ? "block" : "none")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarEliminarModalLabel">¿Está seguro de borrar la meta: @metaNombre?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="CerrarConfirmarEliminar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="CerrarConfirmarEliminar">Cancelar</button>
+                    <button type="button" class="btn btn-danger" @onclick="EliminarMetaConfirmado">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade @(mostrarModalEditarMeta ? "show d-block" : "")" id="confirmarEliminarModal" tabindex="-1" role="dialog" style="display: @(mostrarModalEditarMeta ? "block" : "none")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="CerrarConfirmarEditar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" @bind="NuevaMeta.Nombre" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="CerrarConfirmarEditar">Cancelar</button>
+                    <button type="button" class="btn btn-danger" @onclick="() => EditarMeta(NuevaMeta.Nombre)">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade @(mostrarModal ? "show d-block" : "")" id="metaModal" tabindex="-1" role="dialog" style="display: @(mostrarModal ? "block" : "none")">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Meta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="CerrarModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" @bind="NuevaMeta.Nombre" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="GuardarNuevaMeta">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#metaModal" @onclick="MostrarModal">Nueva Meta</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <ul>
+                @foreach (var item in Data)
+                {
+                    <li>
+                        @item.Nombre  <br />
+                        Fecha Creada: @item.Fecha.ToString()
+                        <br />
+                        Tareas Completadas: @item.Porcentaje <br />
+
+                        <button class="btn-primary" @onclick="() => MostrarModalEditar(item.Id, item.Nombre)">
+                            <i class="fa fa-pen"></i>
+                        </button>
+                        <button class="btn-primary" @onclick="() => MostrarConfirmarEliminarModal(item.Id, item.Nombre)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                        <hr />
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-lg-9 col-md-9">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#metaModal" @onclick="CompletarTarea">Completar Tarea</button>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#metaModal" @onclick="EditarTarea">Editar</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#metaModal" @onclick="BorrarTarea">Borrar</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tarea</th>
+                        <th>Nombre Tarea</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Data)
+                    {
+                        @foreach (var tarea in item.Tareas)
+                        {
+                            <tr @onclick="() => SeleccionarFila(tarea.Tarea)" style="cursor: pointer;">
+                                <td style="display: none;">@tarea.IdTareas</td>
+                                @if (tarea.Importante ?? false)
+                                {
+                                    <i class="fas fa-star" style="color: yellow;"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-star" style="color: lightgray;"></i>
+                                }
+                                <td>@tarea.Tarea</td>
+                                <td>@item.Fecha</td>
+                                <td>@item.Estado</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@code {
+    protected int metaIdBorrar = 0;
+    protected int metaIdEdit = 0;
+    protected int tareaIdBorrar = 0;
+    protected string tareaBorrar = "";
+    protected string metaNombre = "";
+    protected string editmetaNombre = "";
+    protected bool mostrarModal = false;
+    protected bool mostrarModalConfirmarEliminar = false;
+    protected bool mostrarModalEditarMeta = false;
+
+    private void SeleccionarFila(string idTarea)
+    {
+        tareaBorrar = idTarea;
+    }
+
+    protected void CerrarConfirmarEditar()
+    {
+        mostrarModalEditarMeta = false;
+    }
+
+    protected void CerrarConfirmarEliminar()
+    {
+        mostrarModalConfirmarEliminar = false;
+    }
+
+    protected void MostrarModalEditar(int id, string nob)
+    {
+        metaIdEdit = id;
+        NuevaMeta.Nombre = nob;
+        mostrarModalEditarMeta = true;
+    }
+
+    protected void MostrarModal()
+    {
+        mostrarModal = true;
+    }
+
+    protected void CerrarModal()
+    {
+        mostrarModal = false;
+    }
+
+    protected CRUD NuevaMeta = new CRUD();
+    List<CRUD> Data = new List<CRUD>();
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarMetas();
+    }
+
+    private async Task CargarMetas()
+    {
+        var response = await Http.GetFromJsonAsync<List<CRUD>>("values");
+        if (response != null)
+        {
+            Data = response;
+        }
+        else
+        {
+            Data = new List<CRUD>();
+        }
+    }
+
+    List<Tareas> DataTareas = new List<Tareas>();
+
+    private async Task CargarTareas()
+    {
+        var response = await Http.GetFromJsonAsync<List<Tareas>>("tareas/values");
+        if (response != null)
+        {
+            DataTareas = response;
+        }
+        else
+        {
+            DataTareas = new List<Tareas>();
+        }
+    }
+
+    private async Task GuardarNuevaMeta()
+    {
+        NuevaMeta.Fecha = DateTime.Now;
+        NuevaMeta.Porcentaje = 0;
+        var response = await Http.PostAsJsonAsync("values/", NuevaMeta);
+        if (response.IsSuccessStatusCode)
+        {
+            CerrarModal();
+            await CargarMetas();
+        }
+    }
+
+    private async Task EditarMeta(string cam)
+    {
+        var nuevaMeta = new CRUD { Id = metaIdEdit, Nombre = cam };
+        var json = JsonSerializer.Serialize(nuevaMeta);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await Http.PutAsync($"values/{metaIdEdit}", content);
+        if (response.IsSuccessStatusCode)
+        {
+            CerrarConfirmarEditar();
+            await CargarMetas();
+        }
+    }
+
+    private async Task EliminarMetaConfirmado()
+    {
+        var response = await Http.DeleteAsync($"values/{metaIdBorrar}");
+        if (response.IsSuccessStatusCode)
+        {
+            CerrarConfirmarEliminar();
+            await CargarMetas();
+        }
+        else
+        {
+            //VALIDAR SOLO 1 NOBRE NO SE REPITA EN L AMETA,
+        }
+    }
+
+    private void MostrarConfirmarEliminarModal(int id, string nombre)
+    {
+        metaNombre = nombre;
+        metaIdBorrar = id;
+        mostrarModalConfirmarEliminar = true;
+    }
+
+    private async Task EditarTarea()
+    {
+
+    }
+
+    private async Task BorrarTarea()
+    {
+        var response = await Http.DeleteAsync($"tareas/{tareaBorrar}");
+        if (response.IsSuccessStatusCode)
+        {
+            // CerrarConfirmarEliminar();
+            await CargarTareas();
+        }
+    }
+
+    private void CompletarTarea()
+    {
+        throw new NotImplementedException();
+    }
+} 

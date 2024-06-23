@@ -1,0 +1,12 @@
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\CapaEntidades.dll.config
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\CapaEntidades.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\CapaEntidades.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\EntityFramework.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\EntityFramework.xml
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\obj\Debug\CapaEntidades.csproj.AssemblyReference.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\obj\Debug\CapaEnti.0B779BCD.Up2Date
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\obj\Debug\CapaEntidades.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaEntidades\obj\Debug\CapaEntidades.pdb

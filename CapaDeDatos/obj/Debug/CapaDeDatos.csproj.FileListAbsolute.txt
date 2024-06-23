@@ -1,0 +1,17 @@
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\Database1.mdf
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\Database1_log.ldf
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaDeDatos.dll.config
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaDeDatos.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaDeDatos.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaEntidades.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\EntityFramework.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaEntidades.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\CapaEntidades.dll.config
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\EntityFramework.xml
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.AssemblyReference.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\obj\Debug\CapaDeDatos.csproj.CoreCompileInputs.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\obj\Debug\CapaDeDa.D72029D7.Up2Date
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\obj\Debug\CapaDeDatos.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaDeDatos\obj\Debug\CapaDeDatos.pdb

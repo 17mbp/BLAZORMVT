@@ -1,0 +1,17 @@
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\Database1.mdf
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\Database1_log.ldf
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaNegocio.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaNegocio.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaDeDatos.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaEntidades.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\EntityFramework.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaDeDatos.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaDeDatos.dll.config
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaEntidades.pdb
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\CapaEntidades.dll.config
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\bin\Debug\EntityFramework.xml
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\obj\Debug\CapaNego.81B9D119.Up2Date
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\obj\Debug\CapaNegocio.dll
+C:\Users\Manue\source\repos\v22\BlazorApp\CapaNegocio\obj\Debug\CapaNegocio.pdb
